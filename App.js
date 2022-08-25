@@ -1,14 +1,56 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// componentes
+import Home from "./screens/home/Home"
+import Months from './screens/bills/Months';
+
+
+
+
+const Stack = createNativeStackNavigator();
+
+function MySlack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator>
+
+      <Stack.Screen name="inicio" options={{
+        headerShown: false
+      }} component={Home} />
+
+      <Stack.Screen name="charts" options={{
+              headerShown: false
+            }} component={Home} />
+
+      <Stack.Screen name="bills" options={{
+              headerShown: false
+            }} component={Months} />
+
+    
+
+
+    </Stack.Navigator>
   );
 }
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MySlack/>
+    </NavigationContainer>
+  );
+}
+
+
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
